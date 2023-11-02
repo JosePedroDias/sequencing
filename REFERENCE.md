@@ -14,3 +14,48 @@ https://github.com/0xfe/vexflow/wiki/Tutorial
 https://tonejs.github.io
 
 https://www.alphatab.net
+
+
+https://abcnotation.com/
+https://abcwiki.org/abc:syntax
+https://kmgoto.jp/public/ABC/
+
+
+```
+brew install lilypond
+lilypond 1.ly
+```
+
+https://lilypond.org/
+https://lilypond.org/manuals.html
+https://lilypond.org/doc/v2.24/Documentation/snippets/percussion
+    https://lilypond.org/doc/v2.23/Documentation/notation/percussion-notes
+    https://lilypond.org/doc/v2.24/Documentation/learning/simple-notation#pitches
+    https://lilypond.org/doc/v2.24/Documentation/learning/simple-notation#durations-_0028rhythms_0029
+    https://lilypond.org/doc/v2.24/Documentation/learning/simple-notation#rests
+    https://lilypond.org/doc/v2.24/Documentation/learning/multiple-notes-at-once
+    https://lilypond.org/doc/v2.24/Documentation/learning/music-expressions-explained#simultaneous-music-expressions-single-staff
+    https://lilypond.org/doc/v2.23/Documentation/notation/the-layout-block
+
+https://lilypond.org/doc/v2.24/Documentation/usage/index.html
+https://lilypond.org/doc/v2.24/Documentation/learning/tutorial
+https://lilypond.org/doc/v2.22/Documentation/usage/invoking-musicxml2ly
+https://lilypond.org/doc/v2.24/Documentation/notation/cheat-sheet
+
+## drummode
+
+bd      - base drum
+
+hhc     - hihat
+hh
+hho
+
+cymc
+
+tommh
+tommh
+toml
+ tomfh
+
+
+## DrumStaff
