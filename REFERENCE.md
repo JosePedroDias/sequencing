@@ -41,21 +41,3 @@ https://lilypond.org/doc/v2.24/Documentation/usage/index.html
 https://lilypond.org/doc/v2.24/Documentation/learning/tutorial
 https://lilypond.org/doc/v2.22/Documentation/usage/invoking-musicxml2ly
 https://lilypond.org/doc/v2.24/Documentation/notation/cheat-sheet
-
-## drummode
-
-bd      - base drum
-
-hhc     - hihat
-hh
-hho
-
-cymc
-
-tommh
-tommh
-toml
- tomfh
-
-
-## DrumStaff
