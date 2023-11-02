@@ -3,7 +3,7 @@ import { waveTable } from './wave-table.mjs';
 
 export function waitForClick() {
     return new Promise((resolve) => {
-        document.addEventListener('mousedown', resolve, { once: true });
+        document.addEventListener('click', resolve, { once: true });
     });
 }
 
