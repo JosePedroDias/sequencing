@@ -41,3 +41,11 @@ https://lilypond.org/doc/v2.24/Documentation/usage/index.html
 https://lilypond.org/doc/v2.24/Documentation/learning/tutorial
 https://lilypond.org/doc/v2.22/Documentation/usage/invoking-musicxml2ly
 https://lilypond.org/doc/v2.24/Documentation/notation/cheat-sheet
+
+GUI: brew install frescobaldi
+https://frescobaldi.org/
+
+pip install python-ly
+ly musicxml p04.ly > p04.musicxml
+https://python-ly.readthedocs.io/en/latest/command.html#commands
+fails. requires python 2?
