@@ -15,6 +15,23 @@ import { fetchText } from './sequencer.mjs';
 const definition = await fetchText('./grammars/ly.pegjs');
 //console.log(definition);
 
+const lyFileContents = await fetchText('./ly/p04.ly');
+//console.log(lyFileContents);
+
+const patternRgx = /([a-z_]+) = \\drummode \{([^}]+)\}/gm;
+let m;
+const patterns = [];
+do {
+    m = patternRgx.exec(lyFileContents);
+    if (m) {
+        const [_, name, contents] = m;
+        patterns.push({ name, contents: contents.trim() });
+    }
+} while (m);
+//console.log(patterns);
+
+//const x = /\(([^)]+)\)/;
+
 const parser = peggy.generate(definition, {
     optimize: 'speed',
     //optimize: 'size',
@@ -33,7 +50,8 @@ const parser = peggy.generate(definition, {
 //console.log(parser);
 
 //const input = `2 * (3 + 4)`;
-const input = `bd2 hh r hh4 <hh r4 bd>4 <bd hh>`;
+//const input = `bd2 hh r hh4 <hh r4 bd>4 <bd hh>`;
+const input = patterns[0].contents;
 console.log(input);
 
 const output = parser.parse(input);
