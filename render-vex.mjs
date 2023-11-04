@@ -3,7 +3,7 @@ import { Flow } from 'https://cdn.jsdelivr.net/npm/vexflow@4.2.3/+esm';
 import { parseLyPattern, lyPatternToAscii } from './ly-pattern-parser.mjs';
 import { parseAsciiPattern, asciiPatternToHelperLy } from './ascii-pattern-parser.mjs';
 
-const { StaveNote, Stave, Renderer, Voice, Formatter, Beam } = Flow;
+const { StaveNote, Stave, Renderer, Voice, Formatter, Beam, EasyScore, System, Factory, Fraction } = Flow;
 
 const lookup = {
     hh: 'G/5/x1', // x(=x2) x0 x1 x2 x3
@@ -53,11 +53,13 @@ export function _render(arr, linearTime = false) {
     renderer.resize(WW, HH);
     const context = renderer.getContext();
 
+    const formatter = new Formatter();
+
     // posX, posY, W
     const stave = new Stave(PAD_X, PAD_Y, W);
     stave.addClef('percussion').addTimeSignature('4/4');
     stave.setContext(context);
-    stave.draw();
+    //stave.draw();
 
     const noteXs = [];
     const notes = arr.map(([pitches, toNext, fromPrev, ratioOfMeasure]) => {
@@ -74,9 +76,9 @@ export function _render(arr, linearTime = false) {
     });
 
     const voice = new Voice(FOUR_FOUR);
+    //voice.setMode(Voice.Mode.STRICT); // SOFT, FULL, STRICT  ??
     voice.addTickables(notes);
 
-    const formatter = new Formatter();
     formatter.joinVoices([voice]).format([voice], W);
 
     if (linearTime) {
@@ -85,14 +87,27 @@ export function _render(arr, linearTime = false) {
             note.getTickContext().setX(voiceW *noteXs[i]);
         });
     }
-;
+
     voice.draw(context, stave);
 
-    const beams = [
-        //new Beam({ notes: notes.slice(0, 3) }),
-    ];
+    const applyBeams = true;
+    let beams;
 
-    beams.forEach((beam) => {
-        beam.setContext(context).draw();
-    });
+    if (applyBeams) {
+        beams = Beam.generateBeams( voice.getTickables() );
+        beams.forEach((beam) => beam.setContext(context).draw());
+    }
+
+    if (!linearTime) {
+        formatter.joinVoices([voice]).format([voice], W);
+    }
+
+    stave.context.clear();
+
+    stave.draw();
+    voice.draw(context, stave);
+
+    if (applyBeams) {
+        beams.forEach((beam) => beam.setContext(context).draw());
+    }
 }
