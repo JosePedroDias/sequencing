@@ -1,22 +1,13 @@
-import { getPatternsFromLy, parseLyPattern, lyPatternToAscii } from './ly-pattern-parser.mjs';
-import { parseAsciiPattern, asciiPatternToHelperLy } from './ascii-pattern-parser.mjs';
-import { fetchText, printAscii } from './utils.mjs';
-import { render } from './render-vex.mjs';
+import { renderLyPattern, renderAsciiPattern } from './render-vex.mjs';
 
-const lyFileContents = await fetchText('./ly/p04.ly');
-const lyPatterns = getPatternsFromLy(lyFileContents);
-const lyPattern = lyPatterns[8].contents.trim();
-printAscii('LY PATTERN:', ['bold']);
-printAscii(lyPattern);
+const linearTime = true;
 
-const parsedLyPattern = await parseLyPattern(lyPattern);
-
-const asciiPattern = lyPatternToAscii(parsedLyPattern)
-printAscii('ASCII PATTERN:', ['bold']);
-printAscii(asciiPattern);
-
-const parsedAsciiPattern = parseAsciiPattern(asciiPattern);
-const arr = asciiPatternToHelperLy(parsedAsciiPattern);
-//console.log(arr);
-
-render(arr);
+if (false) {
+    await renderLyPattern(`<hh bd>8 hh <hh sn> hh16 bd <hh bd>8 hh <hh sn> hh`, linearTime);
+} else {
+    await renderAsciiPattern(`4/4 60
+hh|o   o   o   o   o   o   o   o   |
+bd|o o   o       o o   o     o   o |
+sn|        o         o     o       |
+`, linearTime);
+}

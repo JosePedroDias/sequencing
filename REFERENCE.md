@@ -69,6 +69,7 @@ https://www.vexflow.com
 https://0xfe.github.io/vexflow/api/
 https://github.com/0xfe/vexflow/wiki/Using-EasyScore
 https://github.com/0xfe/vexflow/wiki/Tutorial
+https://github.com/0xfe/vexflow/blob/master/tests/percussion_tests.ts
 
 upper case notes, relative mode apparently
 pitches in uppercase
