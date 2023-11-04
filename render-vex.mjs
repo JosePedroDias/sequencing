@@ -1,71 +1,80 @@
 import { Flow } from 'https://cdn.jsdelivr.net/npm/vexflow@4.2.3/+esm';
-// https://www.vexflow.com
-// https://0xfe.github.io/vexflow/api/
-// https://github.com/0xfe/vexflow/wiki/Using-EasyScore
-// https://github.com/0xfe/vexflow/wiki/Tutorial
 
-export function render() {
-    const f = new Flow.Factory({
-        renderer: {
-            elementId: 'output',
-            width: 500,
-            height: 200
-        },
+const { StaveNote, Stave, Renderer, Voice, Formatter } = Flow;
+
+const lookup = {
+    hh: 'G/5/x1', // x(=x2) x0 x1 x2 x3
+    sn: 'C/5',
+    bd: 'D/4',
+};
+
+const colors = {
+    hh: '#700',
+    sn: '#070',
+    bd: '#007',
+};
+
+export function render(arr) {
+    const FOUR_FOUR = {
+        num_beats:  4,
+        beat_value: 4,
+    };
+
+    const PAD_X = 20;
+    const PAD_Y = 20;
+    const WW = window.innerWidth;
+    const W = WW - 2 * PAD_X;
+    const H = 120;
+    const HH = H + 2 * PAD_Y;
+
+    const containerEl = document.getElementById('output');
+    const renderer = new Renderer(
+        containerEl,
+        Renderer.Backends.SVG,
+        //Renderer.Backends.CANVAS,
+    );
+    renderer.resize(WW, HH);
+    const context = renderer.getContext();
+
+    // posX, posY, W
+    const stave = new Stave(PAD_X, PAD_Y, W);
+    stave.addClef('percussion').addTimeSignature('4/4');
+
+    const noteXs = [];
+
+    const notes = arr.map(([pitches, toNext, fromPrev, ratioOfMeasure]) => {
+        noteXs.push(ratioOfMeasure);
+        const note = new StaveNote({
+            keys: pitches.map((pitch) => lookup[pitch]),
+            duration: `${toNext}`,
+        });
+
+        // https://github.com/0xfe/vexflow/wiki/Coloring-%26-Styling-Notes
+        pitches.forEach((pn, i) => note.setKeyStyle(i, { fillStyle: colors[pn] }));
+
+        return note;
     });
 
-    const StaveNote = Flow.StaveNote;
+    stave.setContext(context).draw();
 
-    const score = f.EasyScore();
-    const system = f.System();
+    const voice = new Voice(FOUR_FOUR).addTickables(notes);
 
-    /*
-        upper case notes, relative mode apparently
-        pitches in uppercase
-        beams are manual wrap notes inside score.beam()
+    const voices = [voice];
 
-        /q (quarter note)
-        /8 8th
-        /16 16th
-        add yet a third part /r to render a rest in the location of the original pitch
-    */
+    const formatter = new Formatter();
 
-    system
-    .addStave({
-        voices: [
-            // score.voice(score.notes('C#5/q, B4, A4, G#4', { stem: 'up' })),
-            //score.voice(score.notes('C#4/h, C#4', { stem: 'down' })),
+    formatter.format(voices, W);
 
-            //score.voice(score.notes('C5/q, C5/r, C5/2/r'), {}),
+    //voice.draw(context, stave); // to fill in the bounding box data
 
-            //score.voice(score.notes('C5/q, E5/q/r, D5, A5/8, B5/8'), {}),
+    //const voiceW = voice.boundingBox.w; // WEIRD
+    const voiceW = W * 0.9;
 
-            /* score.voice(
-                score.notes(
-                    'C5/q, E5/q/r, D5'
-                )
-                .concat(score.beam(score.notes(
-                    'A5/8, B5/8'
-                ))),
-                {}
-            ) */
+    notes.forEach((note, i) => {
+        note.getTickContext().setX(voiceW *noteXs[i]);
+    });
 
-            score.voice(
-                [
-                    //new StaveNote({ keys: ["a/4"], duration: "8" }),
-                    //new StaveNote({ keys: ["b/4"], duration: "8" }),
-                    new StaveNote({ keys: ["c/4", "a/4"], duration: "4" }),
-                ]
-                .concat(score.notes('E5/q/r, D5'))
-                .concat(score.beam(score.notes(
-                    'A5/8, B5/8'
-                ))),
-                {}
-            )
-        ],
-    })
-    //.addClef('treble')
-    .addClef('percussion')
-    .addTimeSignature('4/4');
-
-    f.draw();
+    //stave.context.clear();
+    stave.draw();
+    voice.draw(context, stave);
 }

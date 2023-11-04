@@ -17,6 +17,6 @@ printAscii(asciiPattern);
 
 const parsedAsciiPattern = parseAsciiPattern(asciiPattern);
 const arr = asciiPatternToHelperLy(parsedAsciiPattern);
-console.log(arr);
+//console.log(arr);
 
-render();
+render(arr);

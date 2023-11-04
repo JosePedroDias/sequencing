@@ -60,3 +60,21 @@ cd lilypond-2.25.9
 mkdir build/
 cd build/
 ../autogen.sh --noconfigure
+
+
+
+# vex flox
+
+https://www.vexflow.com
+https://0xfe.github.io/vexflow/api/
+https://github.com/0xfe/vexflow/wiki/Using-EasyScore
+https://github.com/0xfe/vexflow/wiki/Tutorial
+
+upper case notes, relative mode apparently
+pitches in uppercase
+beams are manual wrap notes inside score.beam()
+
+/q ~ /4 (quarter note)
+/8 8th
+/16 16th
+add yet a third part /r to render a rest in the location of the original pitch

@@ -38,6 +38,7 @@ export function asciiPatternToHelperLy(pattern) {
     const lenT = times[0].length;
     const lenP = pitchNames.length;
 
+    let t = 0;
     let lastIT = 0;
     const sequenceOfPairs = [];
     for (let iT = 0; iT < lenT; ++iT) {
@@ -46,20 +47,18 @@ export function asciiPatternToHelperLy(pattern) {
         for (let iP = 0; iP < lenP; ++iP) {
             const pn = pitchNames[iP];
             const isOn = times[iP][iT];
-            if (isOn) {
-                tickPitches.push(pn);
-                lastIT = iT;
-            }
+            if (isOn) tickPitches.push(pn);
         }
         if (tickPitches.length > 0) {
+            lastIT = iT;
             sequenceOfPairs.push([tickPitches, dIT, iT]);
         }
     }
 
-    // [pitches, dtFromPrev, t] => [pitches, dtToNext, dtFromPrev]
+    // [pitches, dtFromPrev, t] => [pitches, durToNext, durFromPrev]
     const sequenceOfPairs2 = sequenceOfPairs.reduceRight(
         ([sop, dIT2], [pitches, dIT, iT], i) => {
-            sop[i] = [pitches, dtToDuration(dIT2 === undefined ? lenT - iT : dIT2), dIT];
+            sop[i] = [pitches, dtToDuration(dIT2 === undefined ? lenT - iT : dIT2), dtToDuration(dIT), iT / lenT];
             return [sop, dIT];
         },
         [structuredClone(sequenceOfPairs), undefined]
