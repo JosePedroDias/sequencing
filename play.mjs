@@ -1,32 +1,29 @@
-import { waitForClick, fetchText, printAscii } from './utils.mjs';
 import { parseAsciiPattern } from './ascii-pattern-parser.mjs';
+import { button, textEditor, integerRange } from './ui-elements.mjs';
 import {
     getAudioContext,
     bpmToSecs,
     loadPatternSamples,
     schedulePatternPlayback,
-    //playNoise,
-    //playPulse,
-    //playSweep,
 } from './sequencer.mjs';
 
-printAscii('click to start playback...\n', ['bold']);
+const uiText = textEditor(`4/4 60
+hh|o   o   o   o   o   o   o   o   |
+bd|o o   o       o o   o     o   o |
+sn|        o         o     o       |
+`);
 
-const patternString = await fetchText('./patterns/p04-pat01.txt');
-//const patternString = await fetchText('./patterns/p04-pat08.txt');
+const uiNumRepeats = integerRange('repeats:' , () => {}, 1, 4, 1);
 
-await waitForClick();
-const audioCtx = getAudioContext();
-const pattern = parseAsciiPattern(patternString);
-printAscii(patternString);
-const samples = await loadPatternSamples(pattern, audioCtx);
-//playSample(audioCtx, samples.open_hh);
-//playSample(audioCtx, samples.kick);
-//playSample(audioCtx, samples.snare);
+button('play', async () => {
+    const patternString = uiText.getValue();
+    const audioCtx = getAudioContext();
+    const pattern = parseAsciiPattern(patternString);
+    const samples = await loadPatternSamples(pattern, audioCtx);
 
-const dt = bpmToSecs(60, 2, 4);
-schedulePatternPlayback(pattern, audioCtx, samples, dt, 3);
+    const numRepeats = uiNumRepeats.getValue();
+    console.log('numRepeats', numRepeats);
 
-//playNoise(audioCtx);
-//playPulse(audioCtx);
-//playSweep(audioCtx);
+    const dt = bpmToSecs(60, 2, 4);
+    schedulePatternPlayback(pattern, audioCtx, samples, dt, numRepeats);
+});

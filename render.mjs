@@ -28,9 +28,6 @@ async function convert() {
 }
 
 button('render', render);
-/* button('play', () => {
-
-}); */
 
 button('change mode', async () => {
     modeLy = !modeLy;

@@ -1,31 +1,24 @@
-import { getPatternsFromLy, parseLyPattern, lyPatternToAscii } from './ly-pattern-parser.mjs';
-import { parseAsciiPattern, asciiPatternToLy } from './ascii-pattern-parser.mjs';
+import { getPatternsFromLy, lyPatternToAscii } from './ly-pattern-parser.mjs';
+import { asciiPatternToLy } from './ascii-pattern-parser.mjs';
 import { fetchText, printAscii } from './utils.mjs';
 
 const lyFileContents = await fetchText('./ly/p04.ly');
 
 const lyPatterns = getPatternsFromLy(lyFileContents);
-console.log('lyPatterns', lyPatterns);
+//console.log('lyPatterns', lyPatterns);
 
 const lyPattern_ = lyPatterns[8].contents;
 const lyPattern = lyPattern_.trim();
 
-console.log('lyPattern', lyPattern);
 printAscii('LY PATTERN:', ['bold']);
-printAscii(lyPattern_);
+printAscii(lyPattern);
 
-const parsedLyPattern = await parseLyPattern(lyPattern);
-console.log('parsedLyPattern', parsedLyPattern);
+const asciiPattern = await lyPatternToAscii(lyPattern);
 
 printAscii('ASCII PATTERN:', ['bold']);
-const ascii = lyPatternToAscii(parsedLyPattern);
-console.log(ascii);
-printAscii(ascii);
+printAscii(asciiPattern);
 
-///
+const lyPattern2 = await asciiPatternToLy(asciiPattern);
 
-printAscii('LY PATTERN:', ['bold']);
-const parsedAsciiPattern = parseAsciiPattern(ascii);
-const ly = asciiPatternToLy(parsedAsciiPattern);
-console.log(ly);
-printAscii(ly);
+printAscii('LY PATTERN 22:', ['bold']);
+printAscii(lyPattern2);
