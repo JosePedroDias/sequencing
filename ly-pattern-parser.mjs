@@ -109,5 +109,6 @@ export function lyPatternToAscii(parsedLyPattern) {
         return `${pn2}|${arr2}|`;
     }).join('\n');
 
-    return ascii;
+    return `TODO
+${ascii}`;
 }

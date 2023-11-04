@@ -1,8 +1,8 @@
 import { waitForClick, fetchText, printAscii } from './utils.mjs';
+import { parseAsciiPattern } from './ascii-pattern-parser.mjs';
 import {
     getAudioContext,
     bpmToSecs,
-    parseAsciiPattern,
     loadPatternSamples,
     schedulePatternPlayback,
     //playNoise,

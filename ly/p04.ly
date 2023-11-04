@@ -31,25 +31,25 @@ pat_iii = \drummode {
 }
 
 pat_iv = \drummode {
-    <hh bd>16 bd16 hh8 <hh sn> hh16 bd <hh bd>8 <hh bd> <hh sn> hh16 bd
+    <hh bd>16 bd hh8 <hh sn> hh16 bd <hh bd>8 <hh bd> <hh sn> hh16 bd
 }
 
 pat_v = \drummode {
-    <hh bd>16 bd16 hh8 <hh sn> hh16 bd <hh bd>8 <hh bd> <hh sn>16 bd hh8
+    <hh bd>16 bd hh8 <hh sn> hh16 bd <hh bd>8 <hh bd> <hh sn>16 bd hh8
 }
 
 pat_vi = \drummode {
-    <hh bd>16 bd16 hh8 <hh sn> hh16 bd <hh bd>8 <hh bd> <hh sn>16 bd hh bd
+    <hh bd>16 bd hh8 <hh sn> hh16 bd <hh bd>8 <hh bd> <hh sn>16 bd hh bd
 }
 
 pat_vii = \drummode {
     %1                   %2               %3               %4
-    <hh bd>16 bd16 hh bd <hh sn>8 hh16 bd <hh bd>8 <hh bd> <hh sn>16 bd hh bd
+    <hh bd>16 bd hh bd <hh sn>8 hh16 bd <hh bd>8 <hh bd> <hh sn>16 bd hh bd
 }
 
 pat_viii = \drummode {
     %1                   %2               %3                  %4
-    <hh bd>16 bd16 hh bd <hh sn>8 hh16 bd <hh bd> sn <hh bd>8 <hh sn>16 bd hh bd
+    <hh bd>16 bd hh bd <hh sn>8 hh16 bd <hh bd> sn <hh bd>8 <hh sn>16 bd hh bd
 }
 
 dr = {

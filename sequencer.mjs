@@ -78,25 +78,6 @@ export async function fetchSample(audioContext, filepath) {
     return audioBuffer;
 }
 
-export function parseAsciiPattern(patternString) {
-    const lines = patternString.split('\n');
-    if (lines[lines.length-1].trim() === '') lines.pop();
-    const [a, b] = lines.shift().split(' ');
-    return {
-        header: {
-            a, b
-        },
-        tracks: lines.map((line) => {
-            let pipeIdx = line.indexOf('|');
-            let pipeIdx2 = line.indexOf('|', pipeIdx + 1);
-            const name = line.substring(0, pipeIdx).trim();
-            const url = sampleNameToUrl(name);
-            const times = line.substring(pipeIdx + 1, pipeIdx2).split('').map((ch) => ch !== ' ');
-            return { name, url, times };
-        })
-    };
-}
-
 export async function loadPatternSamples(pattern, audioCtx, samples = {}) {
     for (const { url, name } of pattern.tracks) {
         if (samples[name]) continue;

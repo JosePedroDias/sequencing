@@ -49,3 +49,14 @@ pip install python-ly
 ly musicxml p04.ly > p04.musicxml
 https://python-ly.readthedocs.io/en/latest/command.html#commands
 fails. requires python 2?
+
+
+
+# lilypond from source
+
+https://lilypond.org/doc/v2.25/Documentation/contributor/compiling
+tar -xzf lilypond-2.25.9.tar.gz
+cd lilypond-2.25.9
+mkdir build/
+cd build/
+../autogen.sh --noconfigure
