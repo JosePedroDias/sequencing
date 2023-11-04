@@ -1,9 +1,12 @@
 Pattern "pattern"
-  = Thing+
+  = things:(Thing+) {
+    return things.filter((thing) => Boolean(thing));
+  }
 
 Thing "thing"
   = Parallel
   / Item
+  / LineComment
 
 Parallel "parallel"
   = "<" it:(Item+) ">" d:(Duration?) _ {
@@ -21,18 +24,21 @@ Item "item"
 
 Pitch "pitch"
   = BD
-  / SD
+  / SN
   / HH
   / R
 
 BD = "bd" { return 'bd'; }
-SD = "sd" { return 'sd'; }
+SN = "sn" { return 'sn'; }
 HH = "hh" { return 'hh'; }
 
 R  = "r" { return 'r'; }
 
 Duration "duration"
   = _ [0-9]+ { return parseInt(text(), 10); }
+
+LineComment "line_comment"
+  = _ "%" [^\n]+ _ { return undefined; }
 
 _ "whitespace"
   = [ \t\n\r]*
