@@ -1,4 +1,4 @@
 4/4 60
-open_hh |x   x   x   x   x   x   x   x   |
-snare   |        o               o       |
-kick    |o             o o               |
+hh|x   x   x   x   x   x   x   x   |
+sn|        o               o       |
+bd|o             o o               |

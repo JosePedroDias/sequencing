@@ -1,8 +1,8 @@
 const SAMPLE_MAPPING = {
-    kick:      35, // base drum
-    snare:     38,
+    bd:      35, // base drum
+    sn:     38,
     closed_hh: 41,
-    open_hh:   42,
+    hh:   42,
     tom3:      44, // low
     tom2:      45, // mid
     pedal_hh:  46, // pedal hh
