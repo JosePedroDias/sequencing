@@ -56,7 +56,8 @@ export async function parseLyPattern(lyPatternString) {
     return output;
 }
 
-const adaptDur = (dur) => {
+// durations to dt
+export const durationToDt = (dur) => {
     switch (dur) {
         case 16: return  2;
         case  8: return  4;
@@ -78,7 +79,7 @@ export function lyPatternToAscii(parsedLyPattern) {
         if (kind === 'item') pitchesNames.add(content);
         else if (kind === 'parallel') content.forEach(([kind2, content2, dur2]) => pitchesNames.add(content2));
 
-        if (dur != undefined) currentDur = adaptDur(dur);
+        if (dur != undefined) currentDur = durationToDt(dur);
         cursor += currentDur;
     }
     pitchesNames = Array.from(pitchesNames);
@@ -89,7 +90,6 @@ export function lyPatternToAscii(parsedLyPattern) {
         pitches[pn] = arr;
     });
 
-
     cursor = 0;
     for (let [kind, content, dur] of parsedLyPattern) {
         //console.log(kind, content, dur);
@@ -97,7 +97,7 @@ export function lyPatternToAscii(parsedLyPattern) {
         if (kind === 'item') pitches[content][cursor] = true;
         else if (kind === 'parallel') content.forEach(([kind2, content2, dur2]) => { pitches[content2][cursor] = true; });
 
-        if (dur != undefined) currentDur = adaptDur(dur);
+        if (dur != undefined) currentDur = durationToDt(dur);
         cursor += currentDur;
     }
 

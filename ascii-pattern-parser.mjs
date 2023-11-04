@@ -19,15 +19,16 @@ export function parseAsciiPattern(patternString) {
     };
 }
 
-const adaptDur = (dur) => {
-    switch (dur) {
+// dt to durations
+export const dtToDuration = (dt) => {
+    switch (dt) {
         case  2: return 16;
         case  4: return  8;
         case  8: return  4;
         case 16: return  2;
         case 32: return  1;
-        //default: throw dur;
-        default: return 0;
+        //default: throw dt;
+        default: return 0; // happens at t=0
     }
 };
 
@@ -57,7 +58,7 @@ export function asciiPatternToLy(pattern) {
 
     const sequenceOfPairs2 = sequenceOfPairs.reduceRight(
         ([sop, dIT2], [pitches, dIT, iT], i) => {
-            sop[i] = [pitches, adaptDur(dIT2 === undefined ? lenT - iT : dIT2)];
+            sop[i] = [pitches, dtToDuration(dIT2 === undefined ? lenT - iT : dIT2)];
             return [sop, dIT];
         },
         [structuredClone(sequenceOfPairs), undefined]
