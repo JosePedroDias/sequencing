@@ -1,18 +1,6 @@
 import { sampleNameToUrl } from './sample-mapping.mjs';
 import { waveTable } from './wave-table.mjs';
 
-export function waitForClick() {
-    return new Promise((resolve) => {
-        document.addEventListener('click', resolve, { once: true });
-    });
-}
-
-export function sleepSecs(dt) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, dt * 1000);
-    });
-}
-
 export function getAudioContext() {
     return new AudioContext();
 }
@@ -90,12 +78,6 @@ export async function fetchSample(audioContext, filepath) {
     return audioBuffer;
 }
 
-export async function fetchText(url) {
-    const res = await fetch(url);
-    const content = await res.text();
-    return content;
-}
-
 export function parseAsciiPattern(patternString) {
     const lines = patternString.split('\n');
     if (lines[lines.length-1].trim() === '') lines.pop();
@@ -113,13 +95,6 @@ export function parseAsciiPattern(patternString) {
             return { name, url, times };
         })
     };
-}
-
-export function printAscii(data) {
-    const el = document.createElement('code');
-    el.className = 'ascii';
-    el.appendChild(document.createTextNode(data));
-    document.body.appendChild(el);
 }
 
 export async function loadPatternSamples(pattern, audioCtx, samples = {}) {
@@ -147,10 +122,6 @@ export function schedulePatternPlayback(pattern, audioCtx, samples, tickStepInSe
             }
         });
     }
-}
-
-export function scheduleMetronome(audioContext, tickStepInSecs) {
-    // TODO
 }
 
 // TODO MAY NOT USE, DUNNO

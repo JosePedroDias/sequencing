@@ -3,7 +3,7 @@
 // https://github.com/peggyjs/peggy/tree/main/examples
 import peggy from 'https://cdn.jsdelivr.net/npm/peggy@3.0.2/+esm';
 
-import { fetchText } from './sequencer.mjs';
+import { fetchText } from './utils.mjs';
 
 export function getPatternsFromLy(lyFileContents) {
     const patternRgx = /([a-z_]+) = \\drummode \{([^}]+)\}/gm;
@@ -13,7 +13,7 @@ export function getPatternsFromLy(lyFileContents) {
         m = patternRgx.exec(lyFileContents);
         if (m) {
             const [_, name, contents] = m;
-            patterns.push({ name, contents: contents.trim() });
+            patterns.push({ name, contents: contents });
         }
     } while (m);
     return patterns;

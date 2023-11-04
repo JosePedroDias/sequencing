@@ -1,18 +1,16 @@
+import { waitForClick, fetchText, printAscii } from './utils.mjs';
 import {
-    waitForClick,
     getAudioContext,
     bpmToSecs,
     parseAsciiPattern,
     loadPatternSamples,
-    printAscii,
     schedulePatternPlayback,
     //playNoise,
     //playPulse,
     //playSweep,
-    fetchText
 } from './sequencer.mjs';
 
-printAscii('click to start\n');
+printAscii('click to start\n', ['bold']);
 
 //const patternString = await fetchText('./patterns/p04-pat01.txt');
 const patternString = await fetchText('./patterns/p04-pat08.txt');

@@ -1,0 +1,11 @@
+.ascii {
+    font-family: monospace;
+    white-space: pre;
+    display: block;
+    padding: 10px 5px;
+}
+
+.bold {
+    font-weight: bold;
+    color: brown;
+}
