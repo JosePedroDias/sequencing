@@ -32,7 +32,7 @@ export const dtToDuration = (dt) => {
     }
 };
 
-export function asciiPatternToLy(pattern) {
+export function asciiPatternToHelperLy(pattern) {
     const pitchNames = pattern.tracks.map((track) => track.name);
     const times = pattern.tracks.map((track) => track.times);
     const lenT = times[0].length;
@@ -56,9 +56,10 @@ export function asciiPatternToLy(pattern) {
         }
     }
 
+    // [pitches, dtFromPrev, t] => [pitches, dtToNext, dtFromPrev]
     const sequenceOfPairs2 = sequenceOfPairs.reduceRight(
         ([sop, dIT2], [pitches, dIT, iT], i) => {
-            sop[i] = [pitches, dtToDuration(dIT2 === undefined ? lenT - iT : dIT2)];
+            sop[i] = [pitches, dtToDuration(dIT2 === undefined ? lenT - iT : dIT2), dIT];
             return [sop, dIT];
         },
         [structuredClone(sequenceOfPairs), undefined]
@@ -66,10 +67,13 @@ export function asciiPatternToLy(pattern) {
 
     //console.log(sequenceOfPairs);
     //console.log(sequenceOfPairs2);
+    return sequenceOfPairs2;
+}
 
+export function asciiPatternToLy(pattern) {
     let lastD = undefined;
-    const ly = sequenceOfPairs2
-    .map(([pitches, dur]) => {
+    const sequenceOfPairs2 = asciiPatternToHelperLy(pattern);
+    const ly = sequenceOfPairs2.map(([pitches, dur]) => {
         const p = pitches.length > 1 ? `<${pitches.join(' ')}>` : pitches[0];
         const d = lastD === dur ? '' : dur;
         lastD = dur;

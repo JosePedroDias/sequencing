@@ -18,10 +18,6 @@ Item "item"
     return ['item', p, d];
   }
 
-/* PitchOrRest "pitch or rest"
-  = Pitch
-  / R */
-
 Pitch "pitch"
   = BD
   / SN

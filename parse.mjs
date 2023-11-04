@@ -7,10 +7,12 @@ const lyFileContents = await fetchText('./ly/p04.ly');
 const lyPatterns = getPatternsFromLy(lyFileContents);
 console.log('lyPatterns', lyPatterns);
 
-const lyPattern = lyPatterns[8].contents;
+const lyPattern_ = lyPatterns[8].contents;
+const lyPattern = lyPattern_.trim();
+
 console.log('lyPattern', lyPattern);
 printAscii('LY PATTERN:', ['bold']);
-printAscii(lyPattern);
+printAscii(lyPattern_);
 
 const parsedLyPattern = await parseLyPattern(lyPattern);
 console.log('parsedLyPattern', parsedLyPattern);
