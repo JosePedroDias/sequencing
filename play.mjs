@@ -10,7 +10,7 @@ import {
     //playSweep,
 } from './sequencer.mjs';
 
-printAscii('click to start\n', ['bold']);
+printAscii('click to start playback...\n', ['bold']);
 
 //const patternString = await fetchText('./patterns/p04-pat01.txt');
 const patternString = await fetchText('./patterns/p04-pat08.txt');
