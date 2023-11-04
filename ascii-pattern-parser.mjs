@@ -22,12 +22,12 @@ export function parseAsciiPattern(patternString) {
 // dt to durations
 export const dtToDuration = (dt) => {
     switch (dt) {
+        case  1: return 32;
         case  2: return 16;
         case  4: return  8;
         case  8: return  4;
         case 16: return  2;
         case 32: return  1;
-        //default: throw dt;
         default: return 0; // happens at t=0
     }
 };
@@ -69,7 +69,9 @@ export function asciiPatternToHelperLy(pattern) {
     return sequenceOfPairs2;
 }
 
-export function asciiPatternToLy(pattern) {
+export function asciiPatternToLy(patternString) {
+    const pattern = parseAsciiPattern(patternString);
+
     let lastD = undefined;
     const sequenceOfPairs2 = asciiPatternToHelperLy(pattern);
     const ly = sequenceOfPairs2.map(([pitches, dur]) => {

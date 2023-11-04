@@ -1,6 +1,6 @@
 import { Flow } from 'https://cdn.jsdelivr.net/npm/vexflow@4.2.3/+esm';
 
-import { parseLyPattern, lyPatternToAscii } from './ly-pattern-parser.mjs';
+import { lyPatternToAscii } from './ly-pattern-parser.mjs';
 import { parseAsciiPattern, asciiPatternToHelperLy } from './ascii-pattern-parser.mjs';
 
 const { StaveNote, Stave, Renderer, Voice, Formatter, Beam, EasyScore, System, Factory, Fraction } = Flow;
@@ -18,15 +18,14 @@ const colors = {
 };
 
 export async function renderLyPattern(lyPattern, linearTime = false) {
-    const parsedLyPattern = await parseLyPattern(lyPattern);
-    const asciiPattern = lyPatternToAscii(parsedLyPattern);
-    renderAsciiPattern(asciiPattern, linearTime);
+    const asciiPattern = await lyPatternToAscii(lyPattern);
+    return renderAsciiPattern(asciiPattern, linearTime);
 }
 
 export async function renderAsciiPattern(asciiPattern, linearTime = false) {
     const parsedAsciiPattern = parseAsciiPattern(asciiPattern);
     const arr = asciiPatternToHelperLy(parsedAsciiPattern);
-    _render(arr, linearTime);
+    return _render(arr, linearTime);
 }
 
 export function _render(arr, linearTime = false) {
@@ -39,7 +38,7 @@ export function _render(arr, linearTime = false) {
     const PAD_Y = 20;
     const WW = window.innerWidth;
     const W = WW - 2 * PAD_X;
-    const H = 120;
+    const H = 150;
     const HH = H + 2 * PAD_Y;
 
     const containerEl = document.createElement('div');
@@ -109,5 +108,11 @@ export function _render(arr, linearTime = false) {
 
     if (applyBeams) {
         beams.forEach((beam) => beam.setContext(context).draw());
+    }
+
+    return {
+        dispose() {
+            document.body.removeChild(containerEl);
+        }
     }
 }

@@ -59,6 +59,7 @@ export async function parseLyPattern(lyPatternString) {
 // durations to dt
 export const durationToDt = (dur) => {
     switch (dur) {
+        case 32: return  1; //
         case 16: return  2;
         case  8: return  4;
         case  4: return  8;
@@ -68,7 +69,9 @@ export const durationToDt = (dur) => {
     }
 };
 
-export function lyPatternToAscii(parsedLyPattern) {
+export async function lyPatternToAscii(lyPattern) {
+    const parsedLyPattern = await parseLyPattern(lyPattern);
+
     let currentDur = 1;
     let cursor = 0;
     const pitches = {};
