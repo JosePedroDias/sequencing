@@ -1,9 +1,9 @@
 \version "2.24.2"
 
 \header {
-  %piece = "MENUET"
-  %composer = "Christian Petzold"
-  tagline = "4"
+  piece = \doc_title
+  composer = "José Pedro Dias / Chico Santos"
+  tagline = \page_no
 }
 
 \paper {

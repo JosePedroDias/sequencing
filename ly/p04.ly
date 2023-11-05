@@ -1,5 +1,8 @@
 \version "2.24.2"
 
+doc_title = "quatro"
+page_no = "4"
+
 bpm = 60
 
 pat_o = \drummode {
