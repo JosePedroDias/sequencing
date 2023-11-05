@@ -1,8 +1,0 @@
-Context not implemented: DrumVoice
-Warning: SchemeList not implemented!
-'ParseSource' object has no attribute 'SchemeList'
-Warning: SchemeList not implemented!
-'ParseSource' object has no attribute 'SchemeList'
-Warning: Duration not implemented!
-'NoneType' object has no attribute 'dot'
-Unknown command: \pageTurn
