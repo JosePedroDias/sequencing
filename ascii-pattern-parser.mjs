@@ -3,11 +3,10 @@ import { sampleNameToUrl } from "./sample-mapping.mjs";
 export function parseAsciiPattern(patternString) {
     const lines = patternString.split('\n');
     if (lines[lines.length-1].trim() === '') lines.pop();
-    const [a, b] = lines.shift().split(' ');
+    const [timeSignature, bpm] = lines.shift().split(' ');
     return {
-        header: {
-            a, b
-        },
+        timeSignature,
+        bpm: parseFloat(bpm),
         tracks: lines.map((line) => {
             let pipeIdx = line.indexOf('|');
             let pipeIdx2 = line.indexOf('|', pipeIdx + 1);

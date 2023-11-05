@@ -112,6 +112,6 @@ export async function lyPatternToAscii(lyPattern) {
         return `${pn2}|${arr2}|`;
     }).join('\n');
 
-    return `TODO
+    return `4/4 60
 ${ascii}`;
 }

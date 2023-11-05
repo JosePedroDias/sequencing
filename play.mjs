@@ -22,8 +22,7 @@ button('play', async () => {
     const samples = await loadPatternSamples(pattern, audioCtx);
 
     const numRepeats = uiNumRepeats.getValue();
-    console.log('numRepeats', numRepeats);
 
-    const dt = bpmToSecs(60, 2, 4);
+    const dt = bpmToSecs(pattern.bpm, 2, 4); // TODO REVIEW THIS PART
     schedulePatternPlayback(pattern, audioCtx, samples, dt, numRepeats);
 });
