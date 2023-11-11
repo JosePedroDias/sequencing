@@ -16,7 +16,15 @@ export function sleepSecs(dt) {
     });
 }
 
+function removeIfAbove(maxAmount) {
+    const codeEls = Array.from(document.querySelectorAll('code'));
+    if (codeEls.length >= maxAmount) {
+        document.body.removeChild(codeEls[0]);
+    }
+}
+
 export function printAscii(data, classes = []) {
+    removeIfAbove(15);
     const el = document.createElement('code');
     ['ascii', ...classes].forEach((cn) => el.classList.add(cn));
     el.appendChild(document.createTextNode(data));

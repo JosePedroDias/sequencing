@@ -1,0 +1,11 @@
+{
+    "private": true,
+    "name": "sequencing",
+    "type": "module",
+    "scripts": {
+        "serve": "http-server . -a 0.0.0.0 -p 8080 -s -c-1 --cors -S -C certs/cert.pem -K certs/key.pem"
+    },
+    "devDependencies": {
+        "http-server": "^14.1.1"
+    }
+}
