@@ -81,9 +81,14 @@ export async function fetchSample(audioContext, filepath) {
 export async function loadPatternSamples(pattern, audioCtx, samples = {}) {
     for (const { url, name } of pattern.tracks) {
         if (samples[name]) continue;
-        const sample = await fetchSample(audioCtx, url);
-        // console.log(`loaded ${ins.name} with ${url}`);
-        samples[name] = sample;
+        try {
+            const sample = await fetchSample(audioCtx, url);
+            samples[name] = sample;
+            // console.log(`loaded ${name} with ${url}`);
+        } catch (err) {
+            console.error(`error loading ${name} with ${url}`);
+        }
+
     }
     return samples;
 }

@@ -24,7 +24,7 @@ function removeIfAbove(maxAmount) {
 }
 
 export function printAscii(data, classes = []) {
-    removeIfAbove(15);
+    removeIfAbove(22);
     const el = document.createElement('code');
     ['ascii', ...classes].forEach((cn) => el.classList.add(cn));
     el.appendChild(document.createTextNode(data));

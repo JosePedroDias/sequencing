@@ -12,7 +12,7 @@ const SAMPLE_MAPPING = {
     ride_bell: 53,
 };
 
-const SAMPLE_TPL = `./audio_samples/jam_with_chrome/{N}.ogg`;
+export const SAMPLE_TPL = `./audio_samples/jam_with_chrome/{N}.ogg`;
 
 export function sampleNameToUrl(sampleName) {
     return SAMPLE_TPL.replace('{N}', SAMPLE_MAPPING[sampleName]);
