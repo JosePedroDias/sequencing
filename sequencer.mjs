@@ -61,12 +61,20 @@ export function bpmToSecs(bpm, nthNote = 1, numeral = 4) {
     return 60 / 60 / bpm * nthNote * numeral;
 }
 
-export function playSample(audioContext, audioBuffer, time = 0) {
+// https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode
+export function playSample(audioContext, audioBuffer, time = 0, volume = 1) {
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = volume;
+    gainNode.connect(audioContext.destination);
+
     const sampleSource = new AudioBufferSourceNode(audioContext, {
         buffer: audioBuffer,
         playbackRate: 1,
+        // detune: 0
     });
-    sampleSource.connect(audioContext.destination);
+
+    //sampleSource.connect(audioContext.destination);
+    sampleSource.connect(gainNode);
     sampleSource.start(time);
     return sampleSource;
 }

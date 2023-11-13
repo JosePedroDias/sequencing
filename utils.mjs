@@ -4,6 +4,12 @@ export async function fetchText(url) {
     return content;
 }
 
+export async function fetchJson(url) {
+    const res = await fetch(url);
+    const content = await res.json();
+    return content;
+}
+
 export function waitForClick() {
     return new Promise((resolve) => {
         document.addEventListener('click', resolve, { once: true });

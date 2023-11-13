@@ -14,6 +14,7 @@ export const JWC = {
     'bda': '35',
     'bd': '35', //
     'sn': '38',
+    'sne': '38', // FAKE
     'toml': '41',
     'hh': '42', // should be closed does not sound like it
     'hho': '42', // should be closed does not sound like it
@@ -23,13 +24,14 @@ export const JWC = {
     'tommh': '48',
     'tomfh': '48', // FAKE
     'cymc': '49',
+    'cymca': '49', // FAKE
     'cymr': '51',
     'cyms': '49', // FAKE
     'rb': '53',
 }
 
 export const DRUMS_NOTE_MAPPING = {
-    22: '22',// ??
+    //22: '22',// ??
     26: 'hh', // + HH
     35: 'bda', // Acoustic Bass Drum
     36: 'bd', // Bass Drum 1
@@ -50,34 +52,34 @@ export const DRUMS_NOTE_MAPPING = {
     51: 'cymr', // Ride Cymbal 1
     52: 'cymch', // Chinese Cymbal
     53: 'rb', // Ride Bell
-    54: '54',
+    //54: '54',
     55: 'cyms', // Splash Cymbal
     56: 'cb', // Cowbell
     57: 'cymca', // Crash Cymbal 2
-    58: '58',
+    //58: '58',
     59: 'cyma', // Ride Cymbal 2   (cyma or cymb?)
-    60: '60',
-    61: '61',
-    62: '62',
-    63: '63',
-    64: '64',
-    65: '65',
-    66: '66',
-    67: '67',
-    68: '68',
-    69: '69',
-    70: '70',
-    71: '71',
-    72: '72',
-    73: '73',
-    74: '74',
-    75: '75',
-    76: '76',
-    77: '77',
-    78: '78',
-    79: '79',
-    80: '80',
-    80: '81',
+    //60: '60',
+    //61: '61',
+    //62: '62',
+    //63: '63',
+    //64: '64',
+    //65: '65',
+    //66: '66',
+    //67: '67',
+    //68: '68',
+    //69: '69',
+    //70: '70',
+    //71: '71',
+    //72: '72',
+    //73: '73',
+    //74: '74',
+    //75: '75',
+    //76: '76',
+    //77: '77',
+    //78: '78',
+    //79: '79',
+    //80: '80',
+    //80: '81',
 };
 
 export const COMMAND_STOP       =  8;
