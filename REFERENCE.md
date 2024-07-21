@@ -52,6 +52,11 @@ fails. requires python 2?
 
 
 
+https://github.com/danigb/smplr
+https://danigb.github.io/smplr/
+
+
+
 # lilypond from source
 
 https://lilypond.org/doc/v2.25/Documentation/contributor/compiling
