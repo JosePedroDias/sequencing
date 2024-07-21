@@ -1,8 +1,18 @@
 \version "2.24.2"
 
+%TEMP
+%\include "oll-core/package.ily"
+%\loadPackage lilypond-export
+%opts.exporter = #exportMusicXML
+
+%doc_title = "title"
+%page_no = "1"
+%timezp = 4/4
+%bpm = 60
+
 \header {
   piece = \doc_title
-  composer = "José Pedro Dias / Chico Santos"
+  composer = "José Pedro Dias / Francisco Santos"
   tagline = \page_no
 }
 
@@ -31,6 +41,7 @@ dr = {
     }
 }
 
+% VISUALS
 \score {
     \dr
     \layout {
@@ -41,7 +52,11 @@ dr = {
     }
 }
 
+% MIDI
 \score {
     \unfoldRepeats { \dr }
     \midi { \tempo 4 = \bpm }
+
+    % TEMP
+    %\FileExport #opts
 }

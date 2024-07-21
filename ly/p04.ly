@@ -2,8 +2,8 @@
 
 doc_title = "quatro"
 page_no = "4"
-
 bpm = 60
+timezp = 4/4
 
 pat_o = \drummode {
     r1

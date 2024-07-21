@@ -2,8 +2,8 @@
 
 doc_title = "Ritmos 1"
 page_no = "1"
-
 bpm = 60
+timezp = 4/4
 
 pat_i = \drummode {
     <bd hh>8 hh <sn hh> hh <bd hh> hh <sn hh> hh
