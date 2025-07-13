@@ -1,7 +1,17 @@
 # install
 
-    brew install lilypond
-    brew install frescobaldi
+```
+brew install lilypond
+brew install frescobaldi
+
+brew install fluid-synth
+https://member.keymusician.com/Member/FluidR3_GM/index.html
+
+brew install musescore
+
+https://github.com/Audiveris/audiveris
+```
+
 ## commands
 
 generates both a mid and a pdf file:

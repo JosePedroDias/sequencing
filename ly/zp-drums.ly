@@ -12,7 +12,7 @@
 
 \header {
   piece = \doc_title
-  composer = "José Pedro Dias / Francisco Santos"
+  composer = "José Pedro Dias / Pedro Nico"
   tagline = \page_no
 }
 
@@ -33,7 +33,8 @@ dr = {
         \numericTimeSignature
         %\time 4/4
         \time \timezp
-        \tempo 4 = \bpm
+        %\tempo 4 = \bpm
+        %\tempo \timeunit = \bpm
         \set Timing.beamExceptions = #'()
         \override Beam.positions = #'(4.8 . 4.8) % keeps beams horizontal
 
@@ -56,6 +57,7 @@ dr = {
 \score {
     \unfoldRepeats { \dr }
     \midi { \tempo 4 = \bpm }
+    %\midi { \tempo \timeunit = \bpm }
 
     % TEMP
     %\FileExport #opts

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-fluidsynth -i ../midis/FluidR3_GM_GS.sf2 $1
+fluidsynth -i ../midis/FluidR3_GM.sf2 $1
