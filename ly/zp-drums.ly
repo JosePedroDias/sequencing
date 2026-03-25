@@ -1,15 +1,3 @@
-\version "2.24.2"
-
-%TEMP
-%%\include "oll-core/package.ily"
-%%\loadPackage lilypond-export
-%%opts.exporter = #exportMusicXML
-
-%doc_title = "title"
-%page_no = "1"
-%timezp = 4/4
-%bpm = 60
-
 \header {
   piece = \doc_title
   composer = "José Pedro Dias / Pedro Nico"
@@ -35,8 +23,8 @@ dr = {
         %\time \timezp
         \tempo 4 = \bpm
         %\tempo \timeunit = \bpm
-        \set Timing.beamExceptions = #'()
-        \override Beam.positions = #'(4.8 . 4.8) % keeps beams horizontal
+        %\set Timing.beamExceptions = #'()
+        %\override Beam.positions = #'(4.8 . 4.8) % keeps beams horizontal
 
         \main
     }
