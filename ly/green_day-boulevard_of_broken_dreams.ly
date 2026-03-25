@@ -154,11 +154,63 @@ psolo = \drummode {
   }
 }
 
+psoloii = \drummode {
+  \textMark "solo"
+  \relative {
+    <cymc bd> 8 8
+    <cymc sn>
+    cymc
+    <cymc bd> 8 8
+    <cymc sn>
+    cymc
+    
+    <cymc bd> 8 8
+    <cymc sn>
+    cymc   
+    <cymc bd> 8 8
+    <cymc sn>
+    <cymc bd>
+    
+    \break
+    
+    <cymc bd> 8 8
+    <cymc sn>
+    cymc
+    <cymc bd> 8 8
+    <cymc sn>
+    cymc
+    
+    <cymc bd> 8 8
+    <cymc sn>
+    cymc   
+    <cymc bd> 8 8
+    \grace { sn 8 } % ERM?
+    sn 8
+    <cymc bd> 8
+    
+    \break
+    
+    <sn bd> 8 8
+    r 4
+    <sn bd> 8 8
+    r 4
+    
+    \break
+    
+    <hho bd> 8 8
+    <hho sn>
+    hho 16 sn
+    <hho bd> 8 8
+    \grace { sn 8 } % ERM?
+    sn
+    bd
+  }
+}
+
 % 3:09 TODO
 
 main = {
     \stemUp
-    
     \pint    \break
     \pa      \break
     \pafill  \break
@@ -170,8 +222,9 @@ main = {
     \pchorusfillii \break
     \pabridge %\break
     \pafill  \break
-    \psolo      \break
-    \pchorusfillii \break
+    \psoloii
+    %\psolo      \break
+    %\pchorusfillii \break
     % TODO
 }
 

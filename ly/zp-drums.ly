@@ -1,9 +1,9 @@
 \version "2.24.2"
 
 %TEMP
-%\include "oll-core/package.ily"
-%\loadPackage lilypond-export
-%opts.exporter = #exportMusicXML
+%%\include "oll-core/package.ily"
+%%\loadPackage lilypond-export
+%%opts.exporter = #exportMusicXML
 
 %doc_title = "title"
 %page_no = "1"
@@ -31,9 +31,9 @@ dr = {
     \new DrumVoice {
         \clef percussion
         \numericTimeSignature
-        %\time 4/4
-        \time \timezp
-        %\tempo 4 = \bpm
+        \time 4/4
+        %\time \timezp
+        \tempo 4 = \bpm
         %\tempo \timeunit = \bpm
         \set Timing.beamExceptions = #'()
         \override Beam.positions = #'(4.8 . 4.8) % keeps beams horizontal
@@ -60,5 +60,5 @@ dr = {
     %\midi { \tempo \timeunit = \bpm }
 
     % TEMP
-    %\FileExport #opts
+    %%\FileExport #opts
 }
